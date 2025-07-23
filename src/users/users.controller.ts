@@ -15,6 +15,7 @@ import { UsersService } from './users.service';
 import { RegisterDto } from './dto/register.dto';
 import { LoginUserDto } from './dto/login-user.dto';
 import * as jwt from 'jsonwebtoken';
+import { ApiBody, ApiTags, ApiResponse, ApiBadRequestResponse, ApiConflictResponse, ApiUnauthorizedResponse } from '@nestjs/swagger';
 
 class JwtAuthGuard implements CanActivate {
   canActivate(context: ExecutionContext): boolean {
@@ -49,17 +50,26 @@ export class UsersController {
   }
 }
 
+@ApiTags('Auth')
 @Controller()
 export class RegisterController {
   constructor(private readonly usersService: UsersService) {}
 
   @Post('register')
+  @ApiBody({ type: RegisterDto })
+  @ApiResponse({ status: 201, description: 'User registered successfully' })
+  @ApiBadRequestResponse({ description: 'Email and password are required or invalid' })
+  @ApiConflictResponse({ description: 'User with this email already exists' })
   async register(@Body() body: RegisterDto) {
 
     return this.usersService.register(body);
   }
 
   @Post('login')
+  @ApiBody({ type: LoginUserDto })
+  @ApiResponse({ status: 201, description: 'User logged in successfully, returns JWT token' })
+  @ApiBadRequestResponse({ description: 'Email and password are required or invalid' })
+  @ApiUnauthorizedResponse({ description: 'Invalid email or password' })
   async login(@Body() body: LoginUserDto) {
     return this.usersService.login(body);
   }
