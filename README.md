@@ -1,208 +1,98 @@
-NestJS Backend Application
-Описание
-Это базовое приложение на NestJS, разработанное для демонстрации основных функций бэкенда, таких как аутентификация пользователей (регистрация и вход), управление пользователями и интеграция с базой данных MongoDB. Приложение построено с использованием современных практик и готово к развертыванию в Docker.
+<p align="center">
+  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
+</p>
 
-Особенности
-Аутентификация пользователей: Регистрация и вход с использованием JWT (JSON Web Tokens).
+[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
+[circleci-url]: https://circleci.com/gh/nestjs/nest
 
-Управление пользователями: Получение списка пользователей.
+  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
+    <p align="center">
+<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
+<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
+<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
+<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
+<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
+<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
+<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
+  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
+    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
+  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
+</p>
+  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
+  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-Валидация данных: Использование class-validator и ValidationPipe для строгой валидации входящих данных.
+## Description
 
-Mongoose: ORM для взаимодействия с MongoDB.
+[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-Конфигурация: Использование @nestjs/config для безопасного управления переменными окружения.
+## Project setup
 
-Локальная разработка с Docker Compose: Удобное развертывание приложения и базы данных MongoDB в контейнерах.
+```bash
+$ npm install
+```
 
-Тестирование: Юнит-тесты для сервисов и E2E-тесты для контроллеров и интеграции с БД.
+## Compile and run the project
 
-Технологии
-NestJS: Прогрессивный фреймворк Node.js для создания эффективных, надежных и масштабируемых серверных приложений.
+```bash
+# development
+$ npm run start
 
-TypeScript: Язык программирования, обеспечивающий строгую типизацию.
+# watch mode
+$ npm run start:dev
 
-MongoDB: Документоориентированная база данных NoSQL.
+# production mode
+$ npm run start:prod
+```
 
-Mongoose: Объектно-ориентированное моделирование данных (ODM) для MongoDB в Node.js.
+## Run tests
 
-bcrypt: Библиотека для хеширования паролей.
+```bash
+# unit tests
+$ npm run test
 
-jsonwebtoken: Для работы с JWT.
+# e2e tests
+$ npm run test:e2e
 
-Docker / Docker Compose: Для контейнеризации и оркестрации локальной среды разработки.
+# test coverage
+$ npm run test:cov
+```
 
-Jest: Фреймворк для тестирования.
+## Deployment
 
-Supertest: Для HTTP-тестирования в E2E-тестах.
+When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
 
-Начало работы
-Предварительные требования
-Убедитесь, что у вас установлено следующее:
+If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
 
-Node.js (версия 20.x или выше)
+```bash
+$ npm install -g @nestjs/mau
+$ mau deploy
+```
 
-npm (обычно поставляется с Node.js) или Yarn
+With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
 
-Docker и Docker Compose (для запуска в контейнерах)
+## Resources
 
-MongoDB (если вы хотите запускать его локально без Docker Compose, но рекомендуется Docker Compose)
+Check out a few resources that may come in handy when working with NestJS:
 
-Установка
-Клонируйте репозиторий:
+- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
+- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
+- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
+- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
+- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
+- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
+- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
+- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
 
-git clone <URL_ВАШЕГО_РЕПОЗИТОРИЯ>
-cd <ИМЯ_ВАШЕЙ_ПАПКИ_ПРОЕКТА>
+## Support
 
-Установите зависимости:
+Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
-npm install
-# или
-yarn install
+## Stay in touch
 
-Создайте файл .env в корне проекта и добавьте необходимые переменные окружения.
-Пример .env:
+- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
+- Website - [https://nestjs.com](https://nestjs.com/)
+- Twitter - [@nestframework](https://twitter.com/nestframework)
 
-MONGO_DB_URL=mongodb+srv://<username>:<password>@<cluster-url>/<database-name>?retryWrites=true&w=majority
-JWT_SECRET_KEY=ВАШ_СЕКРЕТНЫЙ_КЛЮЧ_ДЛЯ_JWT
+## License
 
-Замените <username>, <password>, <cluster-url>, <database-name> на данные вашего кластера MongoDB Atlas.
-
-JWT_SECRET_KEY должен быть длинной, случайной строкой.
-
-Запуск в режиме разработки (без Docker)
-npm run start:dev
-# или
-yarn start:dev
-
-Приложение будет доступно по адресу http://localhost:8080.
-
-Запуск в продакшене (с Docker Compose)
-Этот метод рекомендуется для локальной разработки, так как он запускает ваше приложение и локальную базу данных MongoDB в контейнерах.
-
-Убедитесь, что Docker Desktop запущен.
-
-Перейдите в корневую директорию проекта, где находится docker-compose.yml.
-
-Запустите контейнеры:
-
-docker-compose up --build -d
-
---build пересобирает образы, если есть изменения в коде или Dockerfile.
-
--d запускает контейнеры в фоновом режиме.
-
-Приложение будет доступно по адресу http://localhost:8080.
-
-Чтобы остановить контейнеры:
-
-docker-compose down
-
-API Эндпоинты
-Базовый URL: http://localhost:8080
-
-1. Регистрация пользователя
-URL: /register
-
-Метод: POST
-
-Тело запроса (JSON):
-
-{
-  "email": "user@example.com",
-  "password": "strongpassword123"
-}
-
-Успешный ответ (201 Created):
-
-{
-  "message": "Пользователь успешно зарегистрирован.",
-  "user": {
-    "_id": "60c72b2f9b1d8c001c8e4d3a",
-    "email": "user@example.com"
-  }
-}
-
-Ошибки:
-
-400 Bad Request: Некорректные данные (например, неверный формат email, отсутствующий пароль).
-
-409 Conflict: Пользователь с таким email уже зарегистрирован.
-
-500 Internal Server Error: Непредвиденная ошибка сервера.
-
-2. Вход пользователя
-URL: /login
-
-Метод: POST
-
-Тело запроса (JSON):
-
-{
-  "email": "user@example.com",
-  "password": "strongpassword123"
-}
-
-Успешный ответ (200 OK):
-
-{
-  "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXJAZXhhbXBsZS5jb20iLCJzdWIiOiI2MGM3MmIyZjliMWQ4YzAwMWM4ZTRkM2EiLCJpYXQiOjE2NzgyNjU2MDAsImV4cCI6MTY3ODI2OTIwMH0...."
-}
-
-Ошибки:
-
-401 Unauthorized: Неверные учетные данные (email или пароль).
-
-400 Bad Request: Некорректные данные.
-
-500 Internal Server Error: Непредвиденная ошибка сервера.
-
-3. Получение всех пользователей (требуется аутентификация)
-URL: /users
-
-Метод: GET
-
-Заголовки:
-
-Authorization: Bearer <accessToken> (полученный после входа)
-
-Успешный ответ (200 OK):
-
-[
-  {
-    "_id": "60c72b2f9b1d8c001c8e4d3a",
-    "email": "user1@example.com"
-  },
-  {
-    "_id": "60c72b2f9b1d8c001c8e4d3b",
-    "email": "user2@example.com"
-  }
-]
-
-Ошибки:
-
-401 Unauthorized: Отсутствует или недействительный токен.
-
-500 Internal Server Error: Непредвиденная ошибка сервера.
-
-Тестирование
-Запуск всех тестов
-npm run test
-# или
-yarn test
-
-Юнит-тесты
-Для запуска только юнит-тестов:
-
-npm run test:unit
-# или
-yarn test:unit
-
-E2E-тесты
-E2E-тесты используют отдельную тестовую базу данных MongoDB. Убедитесь, что Docker запущен.
-
-npm run test:e2e
-# или
-yarn test:e2e
-
-Лицензия
+Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
