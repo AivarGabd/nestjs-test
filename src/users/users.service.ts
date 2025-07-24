@@ -16,7 +16,7 @@ import { LoginUserDto } from './dto/login-user.dto';
 export class UsersService {
   constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {}
 
-  async register(registerDto: RegisterDto): Promise<User> {
+  async register(registerDto: RegisterDto): Promise<UserDocument> {
     const { email, password } = registerDto;
 
     try {
@@ -36,13 +36,11 @@ export class UsersService {
         createdAt: now,
         lastSignInAt: now,
       });
-
       return await newUser.save();
     } catch (error) {
       if (error instanceof ConflictException) {
         throw error;
       }
-
       console.error('Ошибка при регистрации пользователя:', error);
       throw new InternalServerErrorException(
         'Произошла непредвиденная ошибка при регистрации.',
@@ -52,9 +50,6 @@ export class UsersService {
 
   async login(loginUserDto: LoginUserDto): Promise<{ accessToken: string }> {
     const { email, password } = loginUserDto;
-
-    console.log(email, password);
-
 
     try {
       const user = await this.userModel.findOne({ email }).exec();
@@ -81,12 +76,10 @@ export class UsersService {
 
       return { accessToken };
     } catch (error) {
-
-      console.log(error);
-
       if (error instanceof UnauthorizedException) {
         throw error;
       }
+      console.log(error);
       console.error('Ошибка при входе пользователя:', error);
       throw new InternalServerErrorException(
         'Произошла непредвиденная ошибка при входе.',
@@ -94,7 +87,7 @@ export class UsersService {
     }
   }
 
-  async findAll(): Promise<User[]> {
+  async findAll(): Promise<UserDocument[]> {
     try {
       return await this.userModel.find().exec();
     } catch (error) {

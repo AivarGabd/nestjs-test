@@ -15,7 +15,14 @@ import { UsersService } from './users.service';
 import { RegisterDto } from './dto/register.dto';
 import { LoginUserDto } from './dto/login-user.dto';
 import * as jwt from 'jsonwebtoken';
-import { ApiBody, ApiTags, ApiResponse, ApiBadRequestResponse, ApiConflictResponse, ApiUnauthorizedResponse } from '@nestjs/swagger';
+import {
+  ApiBody,
+  ApiTags,
+  ApiResponse,
+  ApiBadRequestResponse,
+  ApiConflictResponse,
+  ApiUnauthorizedResponse,
+} from '@nestjs/swagger';
 
 class JwtAuthGuard implements CanActivate {
   canActivate(context: ExecutionContext): boolean {
@@ -34,7 +41,6 @@ class JwtAuthGuard implements CanActivate {
     }
   }
 }
-
 
 @Controller('users')
 export class UsersController {
@@ -58,20 +64,36 @@ export class RegisterController {
   @Post('register')
   @ApiBody({ type: RegisterDto })
   @ApiResponse({ status: 201, description: 'User registered successfully' })
-  @ApiBadRequestResponse({ description: 'Email and password are required or invalid' })
+  @ApiBadRequestResponse({
+    description: 'Email and password are required or invalid',
+  })
   @ApiConflictResponse({ description: 'User with this email already exists' })
-  async register(@Body() body: RegisterDto) {
+  async register(
+    @Body() registerDto: RegisterDto,
+  ): Promise<{ message: string; user: Partial<User> }> {
+    const userDocument = await this.usersService.register(registerDto); // Получаем UserDocument
 
-    return this.usersService.register(body);
+    
+    const { password, ...result } = userDocument.toObject();
+
+   
+    return {
+      message: 'Пользователь успешно зарегистрирован.',
+      user: result,
+    };
   }
 
   @Post('login')
   @ApiBody({ type: LoginUserDto })
-  @ApiResponse({ status: 201, description: 'User logged in successfully, returns JWT token' })
-  @ApiBadRequestResponse({ description: 'Email and password are required or invalid' })
+  @ApiResponse({
+    status: 201,
+    description: 'User logged in successfully, returns JWT token',
+  })
+  @ApiBadRequestResponse({
+    description: 'Email and password are required or invalid',
+  })
   @ApiUnauthorizedResponse({ description: 'Invalid email or password' })
   async login(@Body() body: LoginUserDto) {
     return this.usersService.login(body);
   }
 }
-
