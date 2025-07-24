@@ -1,0 +1,23 @@
+version: '3.8' # Версия Docker Compose
+
+services:
+  # Сервис для вашего NestJS приложения
+  app:
+    build:
+      context: . # Контекст сборки - текущая директория
+      dockerfile: Dockerfile # Имя Dockerfile
+      target: production # Указываем, что нужно использовать PRODUCTION стадию из Dockerfile
+    ports:
+      - "8080:8080" # Пробрасываем порт 8080 контейнера на порт 8080 хоста
+    # Если вы подключаетесь к MongoDB Atlas, сервис 'mongodb' больше не является зависимостью
+    # depends_on:
+    #   mongodb:
+    #     condition: service_healthy
+    environment:
+      # Переменные окружения для вашего NestJS приложения
+      # Используем имя переменной из вашего env.production и полную строку подключения к MongoDB Atlas
+      MONGO_DB_URL: ${MONGO_DB_URL}
+      JWT_SECRET_KEY: ${JWT_SECRET_KEY} # Ваш JWT секретный ключ
+      # Добавьте другие необходимые переменные окружения
+    # Политика перезапуска: если контейнер завершится с ошибкой, Docker Compose попытается его перезапустить.
+    restart: on-failure

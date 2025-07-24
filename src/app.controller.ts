@@ -1,4 +1,4 @@
-import { Controller } from '@nestjs/common';
+import { Controller,Get } from '@nestjs/common';
 import { AppService } from './app.service';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
@@ -10,4 +10,8 @@ export class AppController {
     private readonly appService: AppService,
     @InjectModel(User.name) private userModel: Model<UserDocument>,
   ) {}
+  @Get('/')
+  getHello(): string {
+    return this.appService.getHello();
+  }
 }

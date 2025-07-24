@@ -296,6 +296,7 @@ describe('UsersService', () => {
   });
 
   describe('findAll', () => {
+
     const mockUsersData = [
       { email: 'user1@example.com', password: 'hashed1', _id: 'id1' },
       { email: 'user2@example.com', password: 'hashed2', _id: 'id2' },
