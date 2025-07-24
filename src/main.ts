@@ -38,7 +38,7 @@ async function bootstrap() {
     credentials: true, 
   });
 
-  await app.listen(8080, '0.0.0.0'); // <-- Ключевое изменение здесь
+  await app.listen(8080, '0.0.0.0'); 
   console.log(`Application is running on: ${await app.getUrl()}`);
 }
 bootstrap();

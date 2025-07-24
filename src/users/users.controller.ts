@@ -73,10 +73,8 @@ export class RegisterController {
   ): Promise<{ message: string; user: Partial<User> }> {
     const userDocument = await this.usersService.register(registerDto); // Получаем UserDocument
 
-    
     const { password, ...result } = userDocument.toObject();
 
-   
     return {
       message: 'Пользователь успешно зарегистрирован.',
       user: result,
