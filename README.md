@@ -1,7 +1,12 @@
 Хостинг backend приложения:
+Хостинг backend приложения:
 ```bash
 https://optimistic-illumination-production.up.railway.app
+
+swagger: 
+https://optimistic-illumination-production.up.railway.app/api#/
 ```
+Дефолтный порт: 8080, запуск Docker
 Дефолтный порт: 8080, запуск Docker
 
 ## Compile and run the project
